@@ -1,30 +1,33 @@
 // ✅ VARIÁVEIS GLOBAIS (Bagunçadas)
-let tarefas = [];
-let proximoId = 1;
-let listaElement = null;
-let inputElement = null;
-let btnAdicionar = null;
-
+class GerenciarTarefas {
+    constructor() {
+this.tarefas = [];
+this.proximoId = 1;
+this.listaElement = null;
+this.inputElement = null;
+this.btnAdicionar = null;
+    }
+}
 // ✅ INICIALIZAÇÃO CONFUSA
-function inicializar() {
-    listaElement = document.getElementById('lista-tarefas');
-    inputElement = document.getElementById('nova-tarefa');
-    btnAdicionar = document.getElementById('btn-adicionar');
+inicializar() {
+    this.listaElement = document.getElementById('lista-tarefas');
+    this.inputElement = document.getElementById('nova-tarefa');
+    this.btnAdicionar = document.getElementById('btn-adicionar');
     
-    carregarDoLocalStorage();
-    renderizarTudo();
+    this.carregarDoLocalStorage();
+    this.renderizarTudo();
     
     // Eventos espalhados
-    btnAdicionar.addEventListener('click', adicionarTarefa);
+    this.btnAdicionar.addEventListener('click', adicionarTarefa);
     
-    inputElement.addEventListener('keypress', function(e) {
+    this.inputElement.addEventListener('keypress', function(e) {
         if (e.key === 'Enter') {
             adicionarTarefa();
         }
     });
     
     // Eventos delegados misturados
-    listaElement.addEventListener('click', function(e) {
+    this.listaElement.addEventListener('click', function(e) {
         if (e.target.type === 'checkbox') {
             const li = e.target.closest('.tarefa');
             const id = parseInt(li.dataset.id);
@@ -39,15 +42,15 @@ function inicializar() {
     });
     
     // Botões adicionais soltos
-    document.getElementById('limpar-concluidas').addEventListener('click', function() {
-        tarefas = tarefas.filter(t => !t.concluida);
+    this.document.getElementById('limpar-concluidas').addEventListener('click', function() {
+        this.tarefas = tarefas.filter(t => !t.concluida);
         salvarNoLocalStorage();
         renderizarTudo();
     });
 }
 
 // ✅ FUNÇÕES SOLTAS NO ESCOPO GLOBAL
-function adicionarTarefa() {
+adicionarTarefa() {
     const descricao = inputElement.value.trim();
     
     if (!descricao) {
@@ -68,13 +71,13 @@ function adicionarTarefa() {
     renderizarTudo();
 }
 
-function removerTarefa(id) {
+removerTarefa(id) {
     tarefas = tarefas.filter(t => t.id !== id);
     salvarNoLocalStorage();
     renderizarTudo();
 }
 
-function alternarConclusao(id) {
+alternarConclusao(id) {
     for (let i = 0; i < tarefas.length; i++) {
         if (tarefas[i].id === id) {
             tarefas[i].concluida = !tarefas[i].concluida;
@@ -86,8 +89,8 @@ function alternarConclusao(id) {
 }
 
 // ✅ FUNÇÃO GIGANTE PARA RENDERIZAR
-function renderizarTudo() {
-    listaElement.innerHTML = '';
+renderizarTudo() {
+    this.listaElement.innerHTML = '';
     
     for (let i = 0; i < tarefas.length; i++) {
         const tarefa = tarefas[i];
@@ -115,7 +118,7 @@ function renderizarTudo() {
         li.appendChild(span);
         li.appendChild(btnRemover);
         
-        listaElement.appendChild(li);
+        this.listaElement.appendChild(li);
     }
     
     // Atualizar estatísticas (código repetido em vários lugares)
@@ -123,7 +126,7 @@ function renderizarTudo() {
 }
 
 // ✅ OUTRA FUNÇÃO SOLTA
-function atualizarEstatisticas() {
+atualizarEstatisticas() {
     const totalElement = document.getElementById('total');
     const concluidasElement = document.getElementById('concluidas');
     
@@ -138,12 +141,12 @@ function atualizarEstatisticas() {
 }
 
 // ✅ FUNÇÕES DE LOCALSTORAGE ESPALHADAS
-function salvarNoLocalStorage() {
+salvarNoLocalStorage() {
     const dados = {
         tarefas: tarefas,
         proximoId: proximoId
     };
-    localStorage.setItem('todoAppSemPOO', JSON.stringify(dados));
+    this.localStorage.setItem('todoAppSemPOO', JSON.stringify(dados));
 }
 
 function carregarDoLocalStorage() {
