@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,12 +10,14 @@
             text-decoration: line-through;
             color: #888;
         }
+
         .btn-remover {
             color: red;
             border: none;
             background: none;
             cursor: pointer;
         }
+
         .stats {
             margin-top: 20px;
             padding: 10px;
@@ -22,24 +25,26 @@
         }
     </style>
 </head>
+
 <body>
     <h1>📝 Todo App (POO)</h1>
-    
+
     <div class="adicionar-tarefa">
         <input type="text" id="nova-tarefa" placeholder="Nova tarefa...">
         <button id="btn-adicionar">Adicionar</button>
     </div>
-    
+
     <ul id="lista-tarefas">
         <!-- As tarefas aparecem aqui via JavaScript -->
     </ul>
-    
+
     <div class="stats">
         <p>Total: <span id="total">0</span> tarefas</p>
         <p>Concluídas: <span id="concluidas">0</span></p>
         <button id="limpar-concluidas">Limpar Concluídas</button>
     </div>
-    
-    <script src="todo-app-sempoo.js"></script>
+
+    <script src="poo.js"></script>
 </body>
+
 </html>
