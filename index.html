@@ -4,26 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo App com POO</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class="site">
     <h1>📝 Todo App (POO)</h1>
-
+    
     <div class="adicionar-tarefa">
         <input type="text" id="nova-tarefa" placeholder="Nova tarefa...">
         <button id="btn-adicionar">Adicionar</button>
     </div>
-
+    
     <ul id="lista-tarefas">
         <!-- As tarefas aparecem aqui via JavaScript -->
     </ul>
-
+    
     <div class="stats">
         <p>Total: <span id="total">0</span> tarefas</p>
         <p>Concluídas: <span id="concluidas">0</span></p>
         <button id="limpar-concluidas">Limpar Concluídas</button>
     </div>
-
+</div>
     <script src="poo.js"></script>
 </body>
 
